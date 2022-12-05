@@ -28,14 +28,26 @@ Run `make dev-run` OR `uvicorn app.main:app --reload`
 
 ### Build, run and push docker image
 
+Using the Makefile:
+
     make docker-login user=YOUR_GITHUB_USER
     make docker-build
     make docker-run
     make docker-push
 
-Alternatively
+Alternatively:
 
-    
+    # login to github's docker registry
+	echo ${GITHUB_TOKEN} | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
+
+    # build docker image
+	docker build -t ghcr.io/ptcdevs/python-backend:latest .
+
+    # run docker image locally
+	docker run -p 8000:8000 --name python-backend-latest ghcr.io/ptcdevs/python-backend:latest
+
+    # push docker image
+	docker push ghcr.io/ptcdevs/python-backend:latest
 
 ## Reference documentation
 
