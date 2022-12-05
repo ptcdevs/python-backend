@@ -4,6 +4,8 @@ from typing import Union
 
 from fastapi import FastAPI
 
+from python.helpers import parse_uvicorn
+
 app = FastAPI()
 
 
@@ -30,13 +32,3 @@ def startup_event():
     logger = logging.getLogger("uvicorn")
     logger.info(swaggerui_message)
     logger.info(redoc_message)
-
-
-def parse_uvicorn(sys_argv):
-    host = sys_argv[sys_argv.index("--host") + 1] if "--host" in sys_argv else "127.0.0.1"
-    port = sys_argv[sys_argv.index("--port") + 1] if "--port" in sys_argv else "8000"
-
-    return [
-        host,
-        port
-    ]

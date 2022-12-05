@@ -8,5 +8,6 @@ run `make requirements`
 
 ## Resources
 
-* FastAPI: <https://github.com/tiangolo/fastapi>
+* FastAPI: <https://fastapi.tiangolo.com/>
+  * GitHub: <https://github.com/tiangolo/fastapi>
   * tutorial: <https://fastapi.tiangolo.com/tutorial/>
