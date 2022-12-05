@@ -1,9 +1,7 @@
 #!make
 
-requirements:
-	pip install fastapi
-	pip install "uvicorn[standard]"
+dev-run:
+	uvicorn main:app --reload
 
-	pip install urllib
-run:
+prod-run:
 	uvicorn main:app --reload
