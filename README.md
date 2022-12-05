@@ -4,7 +4,7 @@ this project will host a backend rest api, coupled with swagger ui
 
 ## Getting started
 
-### Setup PyCharm Python interpreter
+### Setup pycharm python interpreter
 
 Settings -> Project: `python-backend` -> Python Interpreter
 
@@ -25,6 +25,17 @@ Run`make requirements` OR `pip install -r requirements.txt`
 ### Run dev server
 
 Run `make dev-run` OR `uvicorn app.main:app --reload`
+
+### Build, run and push docker image
+
+    make docker-login user=YOUR_GITHUB_USER
+    make docker-build
+    make docker-run
+    make docker-push
+
+Alternatively
+
+    
 
 ## Reference documentation
 
