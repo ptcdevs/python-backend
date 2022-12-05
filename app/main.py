@@ -2,6 +2,7 @@ import logging
 import sys
 from typing import Union
 
+import uvicorn
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -37,3 +38,6 @@ def parse_uvicorn(sys_argv):
     port = sys_argv[sys_argv.index("--port") + 1] if "--port" in sys_argv else "8000"
 
     return (host, port)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)

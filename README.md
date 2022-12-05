@@ -14,11 +14,13 @@ Select New, Location `PROJECTROOT/python-backend/venv`, Base interpreter: `/usr/
 
 ### Open new terminal
 
-Run `source venv/bin/activate` if you don't see `(venv)` at the start of your command prompt
+If you don't see `(venv)` at the start of your command prompt, run
+
+  `source venv/bin/activate`
 
 ### Install pip requirements
 
-Run `make requirements` OR `pip install -r requirements.txt`
+Run`make requirements` OR `pip install -r requirements.txt`
 
 ### Run dev server
 
