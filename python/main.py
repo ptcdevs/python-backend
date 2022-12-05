@@ -19,6 +19,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.on_event("startup")
 def startup_event():
+    print("test")
     is_uvicorn = True if "uvicorn" in sys.argv[0] else False
 
     host_and_port = parse_uvicorn(sys.argv) if is_uvicorn else []
