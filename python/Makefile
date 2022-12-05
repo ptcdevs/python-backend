@@ -1,7 +1,10 @@
 #!make
 
+requirements:
+	pip install -r requirements.txt
+
 dev-run:
 	uvicorn main:app --reload
 
 prod-run:
-	uvicorn main:app --reload
+	echo "TBA, something w/gunicorn"
