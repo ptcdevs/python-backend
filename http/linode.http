@@ -1,0 +1,2 @@
+# curl https://api.linode.com/v4/regions
+GET https://api.linode.com/v4/regions

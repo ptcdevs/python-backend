@@ -6,6 +6,10 @@ root = true
 indent_style = space
 indent_size = 4
 
+[*.tf]
+indent_style = space
+indent_size = 4
+
 # End of line
 end_of_line = lf
 

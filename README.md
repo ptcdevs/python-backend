@@ -1,4 +1,4 @@
-# Python backend
+# Python REST API
 
 this project will host a backend rest api, coupled with swagger ui
 
@@ -6,11 +6,11 @@ this project will host a backend rest api, coupled with swagger ui
 
 ### Setup pycharm python interpreter
 
-Settings -> Project: `python-backend` -> Python Interpreter
+Settings -> Project: `python-restapi` -> Python Interpreter
 
 Click Add Interpreter -> Add Local Interpreter
 
-Select New, Location `PROJECTROOT/python-backend/venv`, Base interpreter: `/usr/bin/python3.10`
+Select New, Location `PROJECTROOT/python-restapi/venv`, Base interpreter: `/usr/bin/python3.10`
 
 ### Open new terminal
 
@@ -41,13 +41,19 @@ Alternatively:
 	echo ${GITHUB_TOKEN} | docker login ghcr.io -u YOUR_GITHUB_USERNAME --password-stdin
 
     # build docker image
-	docker build -t ghcr.io/ptcdevs/python-backend:latest .
+	docker build -t ghcr.io/ptcdevs/python-restapi:latest .
 
     # run docker image locally
-	docker run -p 8000:8000 --name python-backend-latest ghcr.io/ptcdevs/python-backend:latest
+	docker run -p 8000:8000 --name python-restapi-latest ghcr.io/ptcdevs/python-restapi:latest
 
     # push docker image
-	docker push ghcr.io/ptcdevs/python-backend:latest
+	docker push ghcr.io/ptcdevs/python-restapi:latest
+
+## Infrastructure
+
+See this link for terraform backend provisioning on linode (using S3 protocol):
+
+<https://dev.to/itmecho/setting-up-linode-object-storage-as-a-terraform-backend-1ocbI>
 
 ## Reference documentation
 
