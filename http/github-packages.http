@@ -1,0 +1,22 @@
+# curl
+#  -H "Accept: application/vnd.github+json"
+#  -H "Authorization: Bearer <YOUR-TOKEN>"
+#  https://api.github.com/user/packages?package_type=container
+GET https://api.github.com/users/vector623/packages?package_type=container
+Accept: application/vnd.github+json
+Authorization: Bearer {{github-token}}
+
+###
+# curl
+#  -X DELETE
+#  -H "Accept: application/vnd.github+json"
+#  -H "Authorization: Bearer <YOUR-TOKEN>"
+#  https://api.github.com/users/USERNAME/packages/PACKAGE_TYPE/PACKAGE_NAME
+DELETE https://api.github.com/users/vector623/packages/container/python-backend
+Accept: application/vnd.github+json
+Authorization: Bearer {{github-token}}
+
+###
+
+
+
