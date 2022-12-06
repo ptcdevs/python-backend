@@ -59,7 +59,13 @@ Make sure `GITHUB_TOKEN` is set to a PAT in the environment.
 
 ### Linode
 
-Run `make decrypt` in `config/` to decrypt the `LINODE_TOKEN` environment variable.
+Set `~/.age` to the following
+
+    # created: 2022-10-22T19:33:09-04:00
+    # public key: age157regwcpk9srausy2l8q7ttv98urmwxqs2kcpd6nkfwyuej8py8s804e9a
+    AGE-SECRET-KEY-#######
+
+Then run `make decrypt` in `config/` to decrypt the `LINODE_TOKEN` environment variable.
 
 Then run `direnv allow` in `tf/dev/` to load the `LINODE_TOKEN` environment variable.
 
