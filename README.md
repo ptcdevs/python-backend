@@ -53,6 +53,8 @@ Alternatively:
 
 ## Terraform
 
+Configure Github and Linode in order to run the terraform project at `tf/dev`.
+
 ### Github
 
 Make sure `GITHUB_TOKEN` is set to a PAT in the environment.
@@ -87,7 +89,7 @@ To configure linode object storage access in local environment, append to the fo
 
 Key and seret are generated here: <https://cloud.linode.com/object-storage/access-keys>.
 
-### Kubernetes
+## Kubeconfig for kubectl and k9s
 
 Download the kubeconfig file from <https://cloud.linode.com/kubernetes/clusters>. Save to ~/.kube/config/ptcdevk8s-kubeconfig.yaml.
 
