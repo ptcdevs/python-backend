@@ -1,6 +1,6 @@
-# Python REST API
+# README
 
-this project will host a backend rest api, coupled with swagger ui
+This project will host a backend rest api, coupled with swagger ui
 
 # Getting started
 
@@ -103,7 +103,6 @@ Then kubectl should load the lke context:
     CURRENT   NAME                CLUSTER             AUTHINFO                  NAMESPACE
               do-nyc3-ptcdevk8s   do-nyc3-ptcdevk8s   do-nyc3-ptcdevk8s-admin   
     *         lke77314-ctx        lke77314            lke77314-admin            default
-
 
 # Reference documentation
 
