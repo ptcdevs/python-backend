@@ -1,0 +1,3 @@
+Browse application at https://{{ include "python-restapi.fullhost" . }}
+Browse SwaggerUI at https://{{ include "python-restapi.fullhost" . }}/docs
+Browse Redoc at https://{{ include "python-restapi.fullhost" . }}/redoc

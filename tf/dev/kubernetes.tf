@@ -8,7 +8,7 @@ data kubernetes_namespace dev {
 resource kubernetes_secret ghcr-secret {
   provider = kubernetes.ptcdevs
   metadata {
-    name      = "ghcr-secret"
+    name      = "python-restapi-ghcr-secret"
     namespace = data.kubernetes_namespace.dev.metadata[0].name
   }
   type = "kubernetes.io/dockercfg"
