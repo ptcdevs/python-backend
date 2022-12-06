@@ -14,13 +14,13 @@ If release name contains chart name it will be used as a full name.
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
-{{- $name := default .Chart.Name .Values.nameOverride }}
-{{- if contains $name .Release.Name }}
-{{- .Release.Name | trunc 63 | trimSuffix "-" }}
-{{- else }}
-{{- printf "%s-%s" .Release.Name $name | trunc 63 | trimSuffix "-" }}
+{{- printf "%s-%s" .Chart.Name .Values.image.tag | trunc 63 | trimSuffix "-" }}
 {{- end }}
 {{- end }}
+
+
+{{- define "python-restapi.fullhost" -}}
+{{  printf "%s%s" (include "python-restapi.fullname" .) ".ptcdevs.xounges.net" }}
 {{- end }}
 
 {{/*

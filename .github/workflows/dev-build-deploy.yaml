@@ -27,9 +27,9 @@ jobs:
           echo "branch: ${{ steps.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
     outputs:
       branch: ${{ steps.set-refs.outputs.branch }}
-  build-and-deploy:
+  docker-build:
     environment: dev
-    name: Build and deploy
+    name: Build and push docker image
     runs-on: ubuntu-latest
     needs:
       - set-refs
@@ -61,6 +61,29 @@ jobs:
           context: ./
           tags: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}
           push: true
-      - name: Output image tag
+      - id: set-docker-tag
+        name: Output image tag
         run: |
+          echo "docker-tag=ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_OUTPUTS
           echo "docker tag: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+    outputs:
+      branch: ${{ steps.set-docker-tag.docker-tag }}
+  helm-deploy:
+    environment: dev
+    name: Helm deploy to dev
+    runs-on: ubuntu-latest
+    needs:
+      - set-refs
+      - build-and-deploy
+      - uses: actions/checkout@v3
+      - name: Check refs
+        run: |
+          echo "branch: ${{ needs.set-refs.outputs.branch }}"
+          echo "branch: ${{ needs.docker-build.outputs.docker-tag }}"
+      - uses: azure/k8s-set-context@v2
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          context: lke77314-ctx
+      - name: debug
+        run: kubectl get namespaces
