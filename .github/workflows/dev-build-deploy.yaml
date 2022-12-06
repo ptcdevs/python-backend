@@ -64,7 +64,7 @@ jobs:
       - id: set-docker-tag
         name: Output image tag
         run: |
-          echo "docker-tag=ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_OUTPUTS
+          echo "docker-tag=ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_OUTPUT
           echo "docker tag: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
     outputs:
       branch: ${{ steps.set-docker-tag.docker-tag }}
