@@ -90,6 +90,7 @@ jobs:
         run: helm -n dev uninstall python-restapi-${TAG}
         env:
           TAG: ${{ needs.set-refs.outputs.branch }}
+        continue-on-error: true
       - name: Helm install
         run: |
           helm -n ${K8S_NAMESPACE} install python-restapi-${TAG} ./python-restapi \
