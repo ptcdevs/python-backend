@@ -9,3 +9,11 @@ env:
 
 template:
 	helm template ./python-restapi
+
+uninstall:
+	helm -n ${K8S_NAMESPACE} uninstall python-restapi ./python-restapi
+
+install:
+	helm -n ${K8S_NAMESPACE} install python-restapi ./python-restapi
+
+reinstall: uninstall install
