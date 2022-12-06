@@ -45,3 +45,6 @@ jobs:
           context: ./
           tags: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}
           push: true
+      - name: Output image tag
+        run: |
+          echo "ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
