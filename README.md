@@ -51,9 +51,22 @@ Alternatively:
 
 ## Infrastructure
 
-See this link for terraform backend provisioning on linode (using S3 protocol):
+### Linode object storage (for terraform backend)
 
-<https://dev.to/itmecho/setting-up-linode-object-storage-as-a-terraform-backend-1ocbI>
+See this link for terraform backend provisioning on linode (using S3 protocol): <https://dev.to/itmecho/setting-up-linode-object-storage-as-a-terraform-backend-1ocbI>
+
+To configure linode object storage access in local environment, append to the following files:
+
+    # ~/.aws/config
+    [profile linode-s3]
+    output = text
+    region = us-southeast-1
+
+    # ~/.aws/credentials
+    [linode-s3]
+    aws_access_key_id=IRO7MRZA0ZS3M01FUBBU
+    aws_secret_access_key=#####
+
 
 ## Reference documentation
 
