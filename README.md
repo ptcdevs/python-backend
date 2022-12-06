@@ -2,7 +2,9 @@
 
 this project will host a backend rest api, coupled with swagger ui
 
-## Getting started
+# Getting started
+
+## Python RestAPI
 
 ### Setup pycharm python interpreter
 
@@ -49,7 +51,17 @@ Alternatively:
     # push docker image
 	docker push ghcr.io/ptcdevs/python-restapi:latest
 
-## Infrastructure
+## Terraform
+
+### Github
+
+Make sure `GITHUB_TOKEN` is set to a PAT in the environment.
+
+### Linode
+
+Run `make decrypt` in `config/` to decrypt the `LINODE_TOKEN` environment variable.
+
+Then run `direnv allow` in `tf/dev/` to load the `LINODE_TOKEN` environment variable.
 
 ### Linode object storage (for terraform backend)
 
@@ -64,11 +76,28 @@ To configure linode object storage access in local environment, append to the fo
 
     # ~/.aws/credentials
     [linode-s3]
-    aws_access_key_id=IRO7MRZA0ZS3M01FUBBU
+    aws_access_key_id=#####
     aws_secret_access_key=#####
 
+Key and seret are generated here: <https://cloud.linode.com/object-storage/access-keys>.
 
-## Reference documentation
+### Kubernetes
+
+Download the kubeconfig file from <https://cloud.linode.com/kubernetes/clusters>. Save to ~/.kube/config/ptcdevk8s-kubeconfig.yaml.
+
+Add to .bashrc/.zshrc/.zshenv/etc
+
+    export KUBECONFIG=$KUBECONFIG:$HOME/.kube/config:$HOME/.kube/configs/ptcdevk8s-kubeconfig.yaml
+
+Then kubectl should load the lke context:
+
+    $ kubectl config get-contexts
+    CURRENT   NAME                CLUSTER             AUTHINFO                  NAMESPACE
+              do-nyc3-ptcdevk8s   do-nyc3-ptcdevk8s   do-nyc3-ptcdevk8s-admin   
+    *         lke77314-ctx        lke77314            lke77314-admin            default
+
+
+# Reference documentation
 
 * FastAPI: <https://fastapi.tiangolo.com/>
   * GitHub: <https://github.com/tiangolo/fastapi>
