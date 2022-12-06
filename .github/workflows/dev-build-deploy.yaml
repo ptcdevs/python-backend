@@ -75,6 +75,7 @@ jobs:
     needs:
       - set-refs
       - build-and-deploy
+    steps:
       - uses: actions/checkout@v3
       - name: Check refs
         run: |
