@@ -6,6 +6,7 @@ on:
   workflow_dispatch:
 jobs:
   build_and_deploy:
+    environment: dev
     name: Build and Deploy
     runs-on: ubuntu-latest
     steps:
