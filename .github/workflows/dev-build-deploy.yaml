@@ -11,10 +11,12 @@ jobs:
     steps:
       - id: set-refs
         name: Set refs
-        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
+        run: echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
       - name: Check refs
         run: |
-          echo "branch: ${{ steps.set-refs.outputs.BRANCH_NAME }}" >> $GITHUB_STEP_SUMMARY
+          echo "branch: ${{ steps.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+    outputs:
+      branch: ${{ steps.set-refs.outputs.branch }}
   build_and_deploy:
     environment: dev
     name: Build and Deploy
@@ -24,7 +26,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check refs
-
+        run: "branch: ${{ needs.setrefs.outputs.branch }}"
 #      - name: Set up QEMU
 #        uses: docker/setup-qemu-action@v2
 #      - name: Set up Docker Buildx
