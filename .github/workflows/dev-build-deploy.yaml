@@ -23,7 +23,7 @@ jobs:
     name: Build and deploy
     runs-on: ubuntu-latest
     needs:
-      - setrefs
+      - set-refs
     steps:
       - uses: actions/checkout@v3
       - name: Check refs
