@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - add-dev-build-deploy
   pull_request:
     branches:
       - master
