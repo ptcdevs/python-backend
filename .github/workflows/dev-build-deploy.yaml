@@ -30,6 +30,13 @@ jobs:
       - name: Check refs
         run: |
           echo "branch: ${{ needs.set-refs.outputs.branch }}"
+      - uses: actions/cache@v3
+        with:
+          path: |
+            ${{ runner.OS }}/docker
+          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.OS }}-docker-
       - name: Set up QEMU
         uses: docker/setup-qemu-action@v2
       - name: Set up Docker Buildx
@@ -40,13 +47,6 @@ jobs:
           registry: ghcr.io
           username: vector623
           password: ${{ secrets.GHCR_GITHUB_TOKEN }}
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ${{ runner.OS }}/docker
-          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}
-          restore-keys: |
-            ${{ runner.OS }}-docker-
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
