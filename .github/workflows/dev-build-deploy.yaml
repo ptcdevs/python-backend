@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     needs:
       - set-refs
-      - build-and-deploy
+      - docker-build
     steps:
       - uses: actions/checkout@v3
       - name: Check refs
