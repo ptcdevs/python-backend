@@ -10,26 +10,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
+      - name: Set up QEMU
+        uses: docker/setup-qemu-action@v2
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-#      - name: Install Docker
-#        run: |
-#          apt-get update
-#          apt-get install -y docker.io
-#      - name: Build the Docker image
-#        run: |
-#          docker build -t <image_name> <path_to_Dockerfile>
-#      - name: Tag the Docker image
-#        run: |
-#          docker tag <image_name> <image_name>:<version_number>
-#      - name: Push the Docker image to a registry
-#        run: |
-#          docker push <image_name>:<version_number>
-#      - name: Install Helm
-#        run: |
-#          curl -L https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz -o helm.tar.gz
-#          tar xzf helm.tar.
+      - name: Build and push
+        uses: docker/build-push-action@v3
+        with:
+          context: ./
+          tags: ghcr.io/ptcdevs/python-restapi:latest
+          push: true
