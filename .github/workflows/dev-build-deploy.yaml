@@ -6,9 +6,10 @@ on:
   workflow_dispatch:
 jobs:
   setref:
+    runs-on: ubuntu-latest
     steps:
-    - name: Get branch name
-      run: echo "::set-output name=branchName::${{ github.ref }}"
+      - name: Get branch name
+        run: echo "::set-output name=branchName::${{ github.ref }}"
 #  build_and_deploy:
 #    environment: dev
 #    name: Build and Deploy
