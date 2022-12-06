@@ -93,7 +93,7 @@ jobs:
         continue-on-error: true
       - name: Helm install
         run: |
-          helm -n ${K8S_NAMESPACE} install python-restapi-${TAG} ./python-restapi \
+          helm -n dev install python-restapi-${TAG} ./python-restapi \
             --set image.tag=${TAG}
         working-directory: helm
         env:
