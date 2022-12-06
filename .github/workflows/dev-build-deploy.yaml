@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - master
+      - add-dev-build-deploy
   workflow_dispatch:
 jobs:
   setref:
