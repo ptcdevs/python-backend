@@ -8,8 +8,13 @@ jobs:
   setref:
     runs-on: ubuntu-latest
     steps:
-      - name: Get branch name
-        run: echo "::set-output name=branchName::${{ github.ref }}"
+      - id: set-refs
+        name: Set refs
+        run: echo "BRANCH_NAME=${{ github.ref }}" >> $GITHUB_OUTPUT
+      - name: Check refs
+        run: |
+          echo "the triggering github branch is: ${{ steps.set-refs.outputs.BRANCH_NAME }}"
+
 #  build_and_deploy:
 #    environment: dev
 #    name: Build and Deploy
