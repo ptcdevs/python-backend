@@ -226,3 +226,4 @@ Session.vim
 .history
 /config/ptcdevk8s-kubeconfig.yaml
 /config/linode-secret.env
+/tf/dev/.terraform/

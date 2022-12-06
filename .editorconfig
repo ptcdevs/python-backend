@@ -8,10 +8,8 @@ indent_size = 4
 
 [*.tf]
 indent_style = space
-indent_size = 4
+indent_size = 2
 
-# End of line
-end_of_line = lf
-
-# Charset
-charset = utf-8
+[*.yaml]
+indent_style = space
+indent_size = 2

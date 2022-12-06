@@ -1,0 +1,31 @@
+name: Build and Deploy Docker Image
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+jobs:
+  build_and_deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Login to GHCR.io
+        run: echo $ | docker login ghcr.io -u USERNAME --password-stdin
+#      - name: Install Docker
+#        run: |
+#          apt-get update
+#          apt-get install -y docker.io
+#      - name: Build the Docker image
+#        run: |
+#          docker build -t <image_name> <path_to_Dockerfile>
+#      - name: Tag the Docker image
+#        run: |
+#          docker tag <image_name> <image_name>:<version_number>
+#      - name: Push the Docker image to a registry
+#        run: |
+#          docker push <image_name>:<version_number>
+#      - name: Install Helm
+#        run: |
+#          curl -L https://get.helm.sh/helm-v3.2.4-linux-amd64.tar.gz -o helm.tar.gz
+#          tar xzf helm.tar.
