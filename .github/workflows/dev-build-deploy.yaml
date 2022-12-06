@@ -10,7 +10,7 @@ jobs:
     steps:
       - id: set-refs
         name: Set refs
-        run: echo "BRANCH_NAME=${{ github.ref }}" >> $GITHUB_OUTPUT
+        run: echo "BRANCH_NAME=$(echo ${GITHUB_REF#refs/heads/}) }}" >> $GITHUB_OUTPUT
       - name: Check refs
         run: |
           echo "the triggering github branch is: ${{ steps.set-refs.outputs.BRANCH_NAME }}"
