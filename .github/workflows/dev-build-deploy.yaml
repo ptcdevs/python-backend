@@ -27,7 +27,8 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Check refs
-        run: "branch: ${{ needs.set-refs.outputs.branch }}"
+        run: |
+          echo "branch: ${{ needs.set-refs.outputs.branch }}"
 #      - name: Set up QEMU
 #        uses: docker/setup-qemu-action@v2
 #      - name: Set up Docker Buildx
