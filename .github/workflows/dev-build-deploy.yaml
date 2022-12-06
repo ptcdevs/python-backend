@@ -19,7 +19,7 @@ jobs:
         with:
           registry: ghcr.io
           username: vector623
-          password: ${{ secrets.GITHUB_TOKEN }}
+          password: ${{ secrets.GHCR_GITHUB_TOKEN }}
       - name: Build and push
         uses: docker/build-push-action@v3
         with:
