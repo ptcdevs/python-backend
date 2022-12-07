@@ -6,7 +6,19 @@ import uvicorn
 from fastapi import FastAPI
 from starlette.responses import JSONResponse
 
-app = FastAPI()
+app = FastAPI(
+    title="python-restapi",
+    description="source code hosted at <https://github.com/ptcdevs/python-restapi>",
+    version = "0.1.0",
+    license_info={
+        "name": "MIT",
+        "url:": "https://github.com/ptcdevs/python-restapi/blob/master/LICENSE.md"
+    },
+    contact={
+        "name": "David G.",
+        "email": "vector623@fastmail.com"
+    }
+)
 logger = logging.getLogger("uvicorn")
 
 
@@ -22,6 +34,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
 
 @app.get(
     "/health",
+    description="Health check url, returns status of this API",
     responses={
         200: {
             "content": {"application/json": {}},
@@ -34,7 +47,7 @@ def read_item(item_id: int, q: Union[str, None] = None):
     })
 def health_check(status="healthy"):
     if status == "healthy":
-        return {"status": "healthy"}
+        return JSONResponse(status_code=200, content={"status": "healthy"})
     else:
         return JSONResponse(status_code=500, content={"status": "unhealthy"})
 
