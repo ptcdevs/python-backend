@@ -42,7 +42,7 @@ jobs:
         with:
           path: |
             ${{ runner.OS }}/docker
-          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}-python-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.OS }}-docker-
       - name: Set up QEMU
