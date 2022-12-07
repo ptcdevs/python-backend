@@ -15,7 +15,13 @@
     * [Kubeconfig for kubectl and k9s](#kubeconfig-for-kubectl-and-k9s)
 - [Reference documentation](#reference-documentation)
 
-This project will host a backend rest api, coupled with swagger ui
+This project will host a backend rest api, coupled with swagger ui.
+
+# Live demos
+
+* A branch-build for `master` is hosted at <https://python-restapi-master.ptcdevs.xounges.net/>
+    * SwaggerUI at <https://python-restapi-master.ptcdevs.xounges.net/docs>
+    * ReDoc at <https://python-restapi-master.ptcdevs.xounges.net/redoc>
 
 # Getting started
 
