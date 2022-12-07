@@ -11,7 +11,7 @@ jobs:
       - id: set-refs
         name: Set refs
         run: |
-          if [[ ${{ github.event.ref }} =~ ^refs/pull ]]; then
+          if [[ ${{ github.event.ref }} =~ ^refs/heads ]]; then
             echo "branch=$(echo ${GITHUB_REF#refs/heads/})" >> $GITHUB_OUTPUT
           else
             echo "branch=$(echo ${{ github.event.ref }})" >> $GITHUB_OUTPUT
