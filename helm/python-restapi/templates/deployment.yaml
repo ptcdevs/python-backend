@@ -44,9 +44,9 @@ spec:
               path: /health
               port: {{ .Values.deployment.containerPort }}
           readinessProbe:
-            periodSeconds: 10
+            periodSeconds: 5
             timeoutSeconds: 5
-            failureThreshold: 5
+            failureThreshold: 10
             httpGet:
               path: /health
               port: {{ .Values.deployment.containerPort }}
