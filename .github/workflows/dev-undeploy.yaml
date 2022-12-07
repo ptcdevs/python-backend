@@ -1,0 +1,41 @@
+name: Dev undeploy
+on:
+  delete:
+  workflow_dispatch:
+concurrency: ci-${{ github.ref }}
+jobs:
+  set-refs:
+    name: Set references
+    runs-on: ubuntu-latest
+    steps:
+      - id: set-refs
+        name: Set refs
+        run: |
+          echo "branch=$(echo ${{ github.event.ref }})" >> $GITHUB_OUTPUT
+      - name: Check refs
+        run: |
+          echo "branch: ${{ steps.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
+    outputs:
+      branch: ${{ steps.set-refs.outputs.branch }}
+  helm-undeploy:
+    environment: dev
+    name: Helm uninstall
+    runs-on: ubuntu-latest
+    needs:
+      - set-refs
+    steps:
+      - uses: actions/checkout@v3
+      - name: Check refs
+        run: |
+          echo "branch: ${{ needs.set-refs.outputs.branch }}"
+          echo "docker-tag: ${{ needs.docker-build.outputs.docker-tag }}"
+      - uses: azure/k8s-set-context@v3
+        with:
+          method: kubeconfig
+          kubeconfig: ${{ secrets.KUBECONFIG }}
+          context: lke77314-ctx
+      - name: Helm uninstall
+        run: helm -n dev uninstall python-restapi-${TAG}
+        env:
+          TAG: ${{ needs.set-refs.outputs.branch }}
+        continue-on-error: true

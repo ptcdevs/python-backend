@@ -67,7 +67,7 @@ jobs:
           echo "docker-tag=$(echo ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }})" >> $GITHUB_OUTPUT
           echo "docker tag: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
     outputs:
-      branch: ${{ steps.set-docker-tag.outputs.docker-tag }}
+      docker-tag: ${{ steps.set-docker-tag.outputs.docker-tag }}
   helm-deploy:
     environment: dev
     name: Helm deploy to dev
