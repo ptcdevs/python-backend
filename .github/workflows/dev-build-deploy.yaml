@@ -94,11 +94,11 @@ jobs:
       - id: helm-install
         name: Helm install
         run: |
-          helm -n dev install python-restapi-${TAG} ./python-restapi \
+          $HELM_INSTALL_RESULT=$(helm -n dev install python-restapi-${TAG} ./python-restapi \
             --set image.tag=${TAG} \
-            --wait >> $HELM_INSTALL_RESULT
+            --wait)
           echo $HELM_INSTALL_RESULT >> $GITHUB_STEP_SUMMARY
-          echo "helm-output=${GITHUB_OUTPUT}" >> $GITHUB_OUTPUT
+          echo "helm-output=${HELM_INSTALL_RESULT}" >> $GITHUB_OUTPUT
         working-directory: helm
         env:
           TAG: ${{ needs.set-refs.outputs.branch }}
