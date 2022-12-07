@@ -1,6 +1,5 @@
 # README
 
-- [README](#readme)
 - [Getting started](#getting-started)
     * [Python RestAPI](#python-restapi)
         + [Setup pycharm python interpreter](#setup-pycharm-python-interpreter)
