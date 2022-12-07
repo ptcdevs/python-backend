@@ -32,11 +32,11 @@ def read_item(item_id: int, q: Union[str, None] = None):
             "description": "Return a json document with unhealthy api status.",
         },
     })
-def health_check(status = "healthy"):
+def health_check(status="healthy"):
     if status == "healthy":
         return {"status": "healthy"}
     else:
-        return JSONResponse(status_code=500, content = {"status": "unhealthy"})
+        return JSONResponse(status_code=500, content={"status": "unhealthy"})
 
 
 @app.on_event("startup")
