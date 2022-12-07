@@ -37,11 +37,11 @@ def read_item(item_id: int, q: Union[str, None] = None):
     description="Health check url, returns status of this API",
     responses={
         200: {
-            "content": {"application/json": {}},
+            "content": {"application/json": {"example": {"status": "healthy"}}},
             "description": "Return a json document with healthy api status.",
         },
         500: {
-            "content": {"application/json": {}},
+            "content": {"application/json": {"example": {"status": "unhealthy"}}},
             "description": "Return a json document with unhealthy api status.",
         },
     })
