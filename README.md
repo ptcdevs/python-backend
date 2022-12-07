@@ -37,9 +37,7 @@ Select New, Location `PROJECTROOT/python-restapi/venv`, Base interpreter: `/usr/
 
 ### Open new terminal
 
-If you don't see `(venv)` at the start of your command prompt, run
-
-  `source venv/bin/activate`
+If you don't see `(venv)` at the start of your command prompt, run `source venv/bin/activate`
 
 ### Install pip requirements
 
@@ -94,7 +92,8 @@ Then run `direnv allow` in `tf/dev/` to load the `LINODE_TOKEN` environment vari
 
 ### Linode object storage (for terraform backend)
 
-See this link for terraform backend provisioning on linode (using S3 protocol): <https://dev.to/itmecho/setting-up-linode-object-storage-as-a-terraform-backend-1ocbI>
+See this link for terraform backend provisioning on linode (using S3
+protocol): <https://dev.to/itmecho/setting-up-linode-object-storage-as-a-terraform-backend-1ocbI>
 
 To configure linode object storage access in local environment, append to the following files:
 
@@ -112,7 +111,8 @@ Key and seret are generated here: <https://cloud.linode.com/object-storage/acces
 
 ## Kubeconfig for kubectl and k9s
 
-Download the kubeconfig file from <https://cloud.linode.com/kubernetes/clusters>. Save to ~/.kube/config/ptcdevk8s-kubeconfig.yaml.
+Download the kubeconfig file from <https://cloud.linode.com/kubernetes/clusters>. Save to ~
+/.kube/config/ptcdevk8s-kubeconfig.yaml.
 
 Add to .bashrc/.zshrc/.zshenv/etc
 
@@ -128,5 +128,5 @@ Then kubectl should load the lke context:
 # Reference documentation
 
 * FastAPI: <https://fastapi.tiangolo.com/>
-  * GitHub: <https://github.com/tiangolo/fastapi>
-  * tutorial: <https://fastapi.tiangolo.com/tutorial/>
+    * GitHub: <https://github.com/tiangolo/fastapi>
+    * tutorial: <https://fastapi.tiangolo.com/tutorial/>
