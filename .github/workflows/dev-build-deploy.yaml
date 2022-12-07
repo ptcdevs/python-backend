@@ -7,7 +7,7 @@ on:
     branches:
       - master
   workflow_dispatch:
-concurrency: ci-${{ github.ref }}
+concurrency: ${GITHUB_REF}
 jobs:
   set-refs:
     name: Set references
