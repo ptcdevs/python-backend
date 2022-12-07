@@ -4,6 +4,7 @@ from typing import Union
 
 import uvicorn
 from fastapi import FastAPI
+from starlette.responses import JSONResponse
 
 app = FastAPI()
 logger = logging.getLogger("uvicorn")
@@ -17,6 +18,25 @@ def read_root():
 @app.get("/items/{item_id}")
 def read_item(item_id: int, q: Union[str, None] = None):
     return {"item_id": item_id, "q": q}
+
+
+@app.get(
+    "/health",
+    responses={
+        200: {
+            "content": {"application/json": {}},
+            "description": "Return a json document with healthy api status.",
+        },
+        500: {
+            "content": {"application/json": {}},
+            "description": "Return a json document with unhealthy api status.",
+        },
+    })
+def health_check(status = "healthy"):
+    if status == "healthy":
+        return {"status": "healthy"}
+    else:
+        return JSONResponse(status_code=500, content = {"status": "unhealthy"})
 
 
 @app.on_event("startup")
@@ -38,6 +58,7 @@ def parse_uvicorn(sys_argv):
     port = sys_argv[sys_argv.index("--port") + 1] if "--port" in sys_argv else "8000"
 
     return (host, port)
+
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)
