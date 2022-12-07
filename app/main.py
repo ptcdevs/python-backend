@@ -8,7 +8,7 @@ from starlette.responses import JSONResponse
 
 app = FastAPI(
     title="python-restapi",
-    description="A starter python Rest API for beginners. Source code hosted at <https://github.com/ptcdevs/python-restapi>.",
+    description="A playground python Rest API for beginners. Source code hosted at <https://github.com/ptcdevs/python-restapi>.",
     version = "0.1.0",
     license_info={
         "name": "MIT",
