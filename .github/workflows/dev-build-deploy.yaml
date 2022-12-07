@@ -3,12 +3,13 @@ on:
   push:
     branches:
       - master
-      - add-dev-build-deploy
   pull_request:
     branches:
       - master
   workflow_dispatch:
-concurrency: ci-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   set-refs:
     name: Set references
@@ -42,7 +43,7 @@ jobs:
         with:
           path: |
             ${{ runner.OS }}/docker
-          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.OS }}-docker-${{ hashFiles('**/Dockerfile') }}-python-${{ hashFiles('**/requirements.txt') }}
           restore-keys: |
             ${{ runner.OS }}-docker-
       - name: Set up QEMU
@@ -67,7 +68,7 @@ jobs:
           echo "docker-tag=$(echo ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }})" >> $GITHUB_OUTPUT
           echo "docker tag: ghcr.io/ptcdevs/python-restapi:${{ needs.set-refs.outputs.branch }}" >> $GITHUB_STEP_SUMMARY
     outputs:
-      branch: ${{ steps.set-docker-tag.docker-tag }}
+      docker-tag: ${{ steps.set-docker-tag.outputs.docker-tag }}
   helm-deploy:
     environment: dev
     name: Helm deploy to dev
@@ -81,7 +82,7 @@ jobs:
         run: |
           echo "branch: ${{ needs.set-refs.outputs.branch }}"
           echo "docker-tag: ${{ needs.docker-build.outputs.docker-tag }}"
-      - uses: azure/k8s-set-context@v2
+      - uses: azure/k8s-set-context@v3
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }}
@@ -91,7 +92,8 @@ jobs:
         env:
           TAG: ${{ needs.set-refs.outputs.branch }}
         continue-on-error: true
-      - name: Helm install
+      - id: helm-install
+        name: Helm install
         run: |
           helm -n dev install python-restapi-${TAG} ./python-restapi \
             --set image.tag=${TAG} \
