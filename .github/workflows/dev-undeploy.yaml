@@ -2,7 +2,9 @@ name: Dev undeploy
 on:
   delete:
   workflow_dispatch:
-concurrency: ci-${{ github.ref }}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   set-refs:
     name: Set references
