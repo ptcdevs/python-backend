@@ -1,18 +1,20 @@
 # README
 
+- [Live demos](#live-demos)
 - [Getting started](#getting-started)
-    * [Python RestAPI](#python-restapi)
-        + [Setup pycharm python interpreter](#setup-pycharm-python-interpreter)
-        + [Open new terminal](#open-new-terminal)
-        + [Install pip requirements](#install-pip-requirements)
-        + [Run dev server](#run-dev-server)
-        + [Build, run and push docker image](#build--run-and-push-docker-image)
-    * [Terraform](#terraform)
-        + [Github](#github)
-        + [Linode](#linode)
-        + [Linode object storage (for terraform backend)](#linode-object-storage--for-terraform-backend-)
-    * [Kubeconfig for kubectl and k9s](#kubeconfig-for-kubectl-and-k9s)
+  * [Python RestAPI](#python-restapi)
+    + [Setup pycharm python interpreter](#setup-pycharm-python-interpreter)
+    + [Open new terminal](#open-new-terminal)
+    + [Install pip requirements](#install-pip-requirements)
+    + [Run dev server](#run-dev-server)
+    + [Build, run and push docker image](#build--run-and-push-docker-image)
+  * [Terraform](#terraform)
+    + [Github](#github)
+    + [Linode](#linode)
+    + [Linode object storage (for terraform backend)](#linode-object-storage--for-terraform-backend-)
+  * [Kubeconfig for kubectl and k9s](#kubeconfig-for-kubectl-and-k9s)
 - [Reference documentation](#reference-documentation)
+
 
 This project will host a backend rest api, coupled with swagger ui.
 
