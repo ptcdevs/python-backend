@@ -42,7 +42,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /health
-              port: http
+              port: {{ .Values.deployment.containerPort }}
           readinessProbe:
             initialDelaySeconds: 20
             periodSeconds: 60
@@ -50,7 +50,7 @@ spec:
             failureThreshold: 3
             httpGet:
               path: /health
-              port: http
+              port: {{ .Values.deployment.containerPort }}
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
       {{- with .Values.nodeSelector }}
