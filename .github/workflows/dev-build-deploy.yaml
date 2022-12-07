@@ -7,7 +7,9 @@ on:
     branches:
       - master
   workflow_dispatch:
-concurrency: ${GITHUB_REF}
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   set-refs:
     name: Set references
