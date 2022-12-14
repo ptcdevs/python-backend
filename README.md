@@ -3,6 +3,7 @@
 - [Live demos](#live-demos)
 - [Getting started](#getting-started)
   * [Python RestAPI](#python-restapi)
+    + [Install python](#install-python)
     + [Setup pycharm python interpreter](#setup-pycharm-python-interpreter)
     + [Open new terminal](#open-new-terminal)
     + [Install pip requirements](#install-pip-requirements)
@@ -26,7 +27,9 @@ This project will host a backend rest api, coupled with swagger ui.
 
 # Getting started
 
-## Install python
+## Python RestAPI
+
+### Install python
 
 On Linux, run:
 
@@ -35,7 +38,6 @@ sudo apt-get update
 sudo apt-get install python3 python3-pip
 ```
 
-## Python RestAPI
 
 ### Setup pycharm python interpreter
 
