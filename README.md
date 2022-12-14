@@ -26,6 +26,15 @@ This project will host a backend rest api, coupled with swagger ui.
 
 # Getting started
 
+## Install python
+
+On Linux, run:
+
+```shell
+sudo apt-get update
+sudo apt-get install python3 python3-pip
+```
+
 ## Python RestAPI
 
 ### Setup pycharm python interpreter
