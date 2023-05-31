@@ -224,6 +224,7 @@ Session.vim
 **/charts/*.tgz
 
 .history
-/config/ptcdevk8s-kubeconfig.yaml
+/config/ptcdevk8s-kubeconfig-secret.yaml
 /config/linode-secret.env
 /tf/dev/.terraform/
+/config/github-secret.env
